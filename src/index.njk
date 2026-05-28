@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+title: Home
+description: A minimalist blog.
+---
+<section class="intro">
+  <p>{{ site.description }}</p>
+</section>
+
+<section>
+  <h2>Recent posts</h2>
+  <ul class="post-list">
+    {% for post in collections.posts | head(10) %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

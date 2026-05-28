@@ -1,0 +1,348 @@
+:root {
+  --fg: #1a1a1a;
+  --fg-muted: #5a5a5a;
+  --bg: #fdfdfc;
+  --accent: #b54141;
+  --rule: #e5e3df;
+  --content-width: 42rem;
+  --sidenote-width: 13rem;
+  --toc-width: 13rem;
+  --gap: 2.5rem;
+  --frame-width: calc(
+    var(--sidenote-width) + var(--gap) + var(--content-width) + var(--gap) +
+      var(--toc-width)
+  );
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "URW Palladio L",
+    "Book Antiqua", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- header / nav ---------- */
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: var(--frame-width);
+  margin: 2rem auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.site-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--fg);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--fg-muted);
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- main / layout ---------- */
+
+.site-main {
+  max-width: var(--frame-width);
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.post-header {
+  margin-bottom: 2.5rem;
+}
+
+.post-header h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.post-header time {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns:
+    var(--sidenote-width)
+    minmax(0, var(--content-width))
+    var(--toc-width);
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+.post-body {
+  grid-column: 2;
+}
+
+.post-toc {
+  grid-column: 3;
+}
+
+.post-body h2,
+.post-body h3 {
+  font-family: var(--font-sans);
+  margin-top: 2.5rem;
+  line-height: 1.3;
+}
+
+.post-body h2 {
+  font-size: 1.5rem;
+}
+
+.post-body h3 {
+  font-size: 1.2rem;
+}
+
+.post-body p,
+.post-body ul,
+.post-body ol {
+  margin: 1.1rem 0;
+}
+
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--rule);
+}
+
+.post-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--rule);
+  color: var(--fg-muted);
+}
+
+.post-body code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f3f1ed;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.post-body pre {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  background: #f7f5f1;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}
+
+/* footnotes (from markdown-it-footnote) */
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.92rem;
+  color: var(--fg-muted);
+}
+
+.footnotes ol {
+  padding-left: 1.25rem;
+}
+
+/* ---------- TOC ---------- */
+
+.post-toc {
+  position: sticky;
+  top: 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 1rem;
+}
+
+.toc-label {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.post-toc .toc,
+.post-toc nav.toc {
+  margin: 0;
+}
+
+.post-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-toc li {
+  margin: 0.3rem 0;
+}
+
+.post-toc li ul {
+  padding-left: 0.9rem;
+}
+
+.post-toc a {
+  color: var(--fg-muted);
+}
+
+.post-toc a:hover {
+  color: var(--accent);
+}
+
+/* ---------- sidenotes (Tufte-style, left margin) ---------- */
+
+.sidenote-number {
+  color: var(--accent);
+  font-size: 0.75em;
+  margin-left: 0.05em;
+}
+
+.sidenote {
+  float: left;
+  clear: left;
+  width: var(--sidenote-width);
+  margin-left: calc(-1 * (var(--sidenote-width) + var(--gap)));
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+.sidenote .sidenote-num {
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 0.2em;
+}
+
+.sidenote a {
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--rule);
+}
+
+.sidenote a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- post list / homepage ---------- */
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-list time {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  max-width: var(--frame-width);
+  margin: 3rem auto 2rem;
+  padding: 1.5rem 1.5rem 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-body,
+  .post-toc {
+    grid-column: 1;
+  }
+
+  .post-toc {
+    position: static;
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding: 1rem 0 0;
+    margin-bottom: 2rem;
+    order: -1;
+  }
+
+  .sidenote {
+    float: none;
+    width: auto;
+    margin: 0.75rem 0;
+    padding: 0.6rem 0.9rem;
+    border-left: 2px solid var(--accent);
+    background: #faf7f2;
+    display: block;
+  }
+}

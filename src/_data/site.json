@@ -1,0 +1,14 @@
+{
+  "title": "Recursive Curiosity",
+  "description": "Reflection and Action",
+  "url": "http://nasteffe.github.io/blog",
+  "author": {
+    "name": "Vic",
+    "email": "enforced_universal400@simplelogin.com"
+  },
+  "nav": [
+    { "label": "Home", "url": "/" },
+    { "label": "Posts", "url": "/posts/" },
+    { "label": "About", "url": "/about/" }
+  ]
+}
